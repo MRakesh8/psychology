@@ -1,0 +1,211 @@
+================================================================================
+   HOW TO CONNECT YOUR GMAIL TO RECEIVE CONTACT FORM MESSAGES
+   Psychology Insight Website — Setup Guide
+================================================================================
+
+Your website uses "FormSubmit.co" — a free service that forwards form
+submissions directly to your Gmail inbox (rakesh837m@gmail.com).
+No server, no database, no backend code needed.
+
+Both the CONTACT FORM and the BOOKING FORM use this same service.
+
+
+================================================================================
+   STEP 1: ACTIVATE YOUR EMAIL ON FORMSUBMIT (ONE-TIME ONLY)
+================================================================================
+
+   ✅ ALREADY DONE! Your email has been activated.
+   
+   Your FormSubmit endpoint is:
+   https://formsubmit.co/el/yacenu
+   
+   This endpoint is connected to: rakesh837m@gmail.com
+   All form submissions will be forwarded to your Gmail inbox.
+
+   (If you ever need to re-activate or change email, see the
+    "How to Change the Receiver Email" section below.)
+
+
+================================================================================
+   STEP 2: TEST THE CONTACT FORM
+================================================================================
+
+   1. Open your website:
+      - If running locally, open index.html in your browser
+      - If hosted online, go to your website URL
+
+   2. Scroll down to the "Get in Touch" section.
+
+   3. Fill in the contact form:
+      - Full Name: Test User
+      - Email: any@email.com
+      - Subject: Counselling Session
+      - Message: This is a test message
+
+   4. Click "Send Message".
+
+   5. You should see a "Sending your message..." status.
+
+   6. If everything is connected, you will see:
+      "Message Sent Successfully!" with a green checkmark ✓
+
+   7. Check your Gmail inbox (rakesh837m@gmail.com).
+      You should receive an email with:
+      - Subject: "Psychology Insight — New Message from Test User"
+      - Body: A clean table with Name, Email, Subject, Message
+
+   ⚠️ FIRST SUBMISSION: The very first submission from your website
+      may trigger another confirmation email. Click it to confirm.
+      After that, all future submissions go straight through.
+
+
+================================================================================
+   STEP 3: TEST THE BOOKING FORM
+================================================================================
+
+   1. Click "Book a Session" button on your website.
+
+   2. Fill in the booking form with test details:
+      - Full Name: Test Client
+      - Age: 25
+      - Gender: Male
+      - Phone: +91 12345 67890
+      - Email: test@email.com
+      - Language: English
+      - Reason: General Mental Health Check
+      - Description: Test booking
+      - Date: Any future date
+      - Time: Morning
+
+   3. Click "Request Session".
+
+   4. Check your Gmail inbox (rakesh837m@gmail.com).
+      You should receive an email with:
+      - Subject: "New Client: Test Client — Booking from Psychology Insight"
+      - Body: A table with ALL client details
+
+
+================================================================================
+   HOW IT WORKS (TECHNICAL EXPLANATION)
+================================================================================
+
+   Your website uses 2 things to send emails:
+
+   1. FORMSUBMIT.CO — A free external service
+      - Website: https://formsubmit.co/
+      - It acts as a bridge between your website form and Gmail
+      - It has NO monthly limits for the free plan
+      - It does NOT store your data — just forwards it to your email
+
+   2. AJAX (JavaScript fetch) — In your script.js file
+      - When someone fills the form and clicks Submit, JavaScript
+        collects the form data and sends it to FormSubmit's server
+      - FormSubmit then forwards the data to your Gmail
+      - The user stays on your website (no page redirect)
+
+   The flow looks like this:
+
+   User fills form → Clicks Submit → JavaScript sends data to FormSubmit
+   → FormSubmit forwards email to rakesh837m@gmail.com → You see it in Gmail
+
+
+================================================================================
+   HOW TO CHANGE THE RECEIVER EMAIL
+================================================================================
+
+   If you want to receive emails at a DIFFERENT Gmail address:
+
+   1. Go to https://formsubmit.co/
+   2. Enter your NEW email address
+   3. Click "Get Started"
+   4. Confirm the new email (check inbox/spam)
+   5. After confirming, FormSubmit will give you a new endpoint URL
+      (like "https://formsubmit.co/el/xxxxxx")
+   6. Open the file: script.js
+   7. Find this line at the top:
+      
+      const FORM_URL = 'https://formsubmit.co/ajax/el/yacenu';
+   
+   8. Replace the endpoint with your NEW one (keep the /ajax/ prefix):
+      
+      const FORM_URL = 'https://formsubmit.co/ajax/el/YOUR_NEW_ENDPOINT';
+   
+   9. Save the file. That's it!
+
+   ⚠️ Also update the display email shown on the website:
+      - In index.html, search for "rakesh837m@gmail.com" and replace
+        it with your new email in the contact section and error messages
+      - In script.js, update the error message fallback emails
+
+
+================================================================================
+   TROUBLESHOOTING
+================================================================================
+
+   ❌ PROBLEM: Form says "Could not send" or shows error
+   ✅ SOLUTION:
+      - Make sure you activated your email on FormSubmit (Step 1)
+      - Check if you confirmed the email from FormSubmit
+      - Make sure you have internet connection
+      - Try refreshing the page and submitting again
+
+   ❌ PROBLEM: No email received after successful submission
+   ✅ SOLUTION:
+      - Check your SPAM / JUNK folder in Gmail
+      - Wait 1-2 minutes (sometimes there's a small delay)
+      - Make sure the email in script.js matches your Gmail
+
+   ❌ PROBLEM: Email goes to spam
+   ✅ SOLUTION:
+      - Open the email from FormSubmit in your spam folder
+      - Click "Not Spam" or "Report Not Spam"
+      - Add "formsubmit.co" to your Gmail contacts
+      - Create a Gmail filter:
+        1. In Gmail, click the gear icon → "See all settings"
+        2. Go to "Filters and Blocked Addresses"
+        3. Click "Create a new filter"
+        4. In "From" field, type: formsubmit.co
+        5. Click "Create filter"
+        6. Check "Never send it to Spam"
+        7. Click "Create filter"
+
+   ❌ PROBLEM: Want to receive at multiple email addresses
+   ✅ SOLUTION:
+      - FormSubmit supports CC. Add this to the fetch body in script.js:
+        "_cc": "second-email@gmail.com"
+
+   ❌ PROBLEM: Getting too many spam form submissions
+   ✅ SOLUTION:
+      - FormSubmit has built-in spam protection
+      - You can also add CAPTCHA by adding to the fetch body:
+        "_captcha": "true"
+      - Add honeypot (already invisible to users):
+        "_honey": ""
+
+
+================================================================================
+   IMPORTANT NOTES
+================================================================================
+
+   • FormSubmit is FREE — no payment required
+   • FormSubmit does NOT require any API key
+   • Your email address is HIDDEN from website visitors
+     (they only see a hashed version in the JavaScript)
+   • The service works with any email provider (Gmail, Outlook, etc.)
+   • Emails include a "Reply-To" header, so you can directly reply
+     to the person who contacted you from your Gmail
+   • Both forms (Contact + Booking) use the SAME FormSubmit endpoint
+
+
+================================================================================
+   QUICK START SUMMARY
+================================================================================
+
+   1. Go to https://formsubmit.co/
+   2. Enter: rakesh837m@gmail.com
+   3. Click "Get Started"
+   4. Open Gmail → Find confirmation email → Click the link
+   5. Test your website contact form
+   6. ✅ Done! You'll receive contact messages in Gmail
+
+================================================================================
