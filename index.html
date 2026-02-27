@@ -524,20 +524,27 @@
         -->
         <div class="contact-form-wrapper animate-on-scroll">
           <!-- Form (visible by default, hidden after success) -->
-          <form class="contact-form" id="contactForm">
+          <form class="contact-form" id="contactForm" action="https://formsubmit.co/rakesh837m@gmail.com" method="POST">
+            <!-- FormSubmit Security & Config Fields -->
+            <input type="hidden" name="_captcha" value="true">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_subject" value="Psychology Insight — New Contact Message">
+            <input type="hidden" name="_next" value="https://mrakesh8.github.io/doctor-1/">
+            <input type="text" name="_honey" style="display:none">
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label">Full Name</label>
-                <input type="text" class="form-input" placeholder="Your Name" id="formName" required />
+                <input type="text" name="Name" class="form-input" placeholder="Your Name" id="formName" required />
               </div>
               <div class="form-group">
                 <label class="form-label">Email Address</label>
-                <input type="email" class="form-input" placeholder="your@email.com" id="formEmail" required />
+                <input type="email" name="Email" class="form-input" placeholder="your@email.com" id="formEmail"
+                  required />
               </div>
             </div>
             <div class="form-group">
               <label class="form-label">Subject</label>
-              <select class="form-input form-select" id="formSubject">
+              <select name="Subject" class="form-input form-select" id="formSubject">
                 <!-- TO ADD/REMOVE OPTIONS: Edit the <option> tags below -->
                 <option>Counselling Session</option>
                 <option>Career Guidance</option>
@@ -547,8 +554,8 @@
             </div>
             <div class="form-group">
               <label class="form-label">Message</label>
-              <textarea rows="4" class="form-input form-textarea" placeholder="How can I help you?" id="formMessage"
-                required></textarea>
+              <textarea rows="4" name="Message" class="form-input form-textarea" placeholder="How can I help you?"
+                id="formMessage" required></textarea>
             </div>
             <button type="submit" class="form-submit" id="formSubmit">Send Message</button>
             <!-- Status message shown after submission -->
@@ -648,7 +655,13 @@
 
       <!-- BOOKING FORM — Submitted via JavaScript (no page redirect)
            TO CHANGE RECEIVER EMAIL: Edit FORM_HASH in script.js -->
-      <form class="booking-form" id="bookingForm">
+      <form class="booking-form" id="bookingForm" action="https://formsubmit.co/rakesh837m@gmail.com" method="POST">
+        <!-- FormSubmit Security & Config Fields -->
+        <input type="hidden" name="_captcha" value="true">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_subject" value="New Appointment Request">
+        <input type="hidden" name="_next" value="https://mrakesh8.github.io/doctor-1/">
+        <input type="text" name="_honey" style="display:none">
 
         <!-- Client Name -->
         <div class="booking-form-row">

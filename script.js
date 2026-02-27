@@ -8,7 +8,7 @@
 //   1. Go to https://formsubmit.co/
 //   2. Enter your new email and activate it
 //   3. Replace the email in the URL below with your new email
-const FORM_URL = 'https://formsubmit.co/ajax/rakesh837m@gmail.com';
+const FORM_URL = 'https://formsubmit.co/rakesh837m@gmail.com';
 
 // ============================================================
 // MOBILE MENU
