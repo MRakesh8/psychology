@@ -176,7 +176,7 @@ export const setRateLimit = (key: string): void => {
  */
 export const getHoneypotFieldName = (formType: string): string => {
   const seed = formType + new Date().toISOString().split('T')[0];
-  return `_hp_${Buffer.from(seed).toString('base64').slice(0, 8)}`;
+  return `_hp_${btoa(seed).slice(0, 8)}`;
 };
 
 /**

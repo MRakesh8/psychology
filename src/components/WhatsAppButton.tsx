@@ -31,6 +31,15 @@ export default function WhatsAppButton({
 }: WhatsAppButtonProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  // Track window width safely (avoids SSR crash from window.innerWidth in JSX)
+  useEffect(() => {
+    const checkWidth = () => setIsDesktop(window.innerWidth >= 1024);
+    checkWidth();
+    window.addEventListener('resize', checkWidth);
+    return () => window.removeEventListener('resize', checkWidth);
+  }, []);
 
   // Only show on mobile or when scrolled down (3000px or after some engagement)
   useEffect(() => {
@@ -48,8 +57,8 @@ export default function WhatsAppButton({
     return `https://wa.me/${phoneNumber.replace(/\D/g, '')}?text=${encodedMessage}`;
   };
 
-  const positionClasses = position === 'bottom-right' 
-    ? 'bottom-6 right-6 sm:bottom-8 sm:right-8' 
+  const positionClasses = position === 'bottom-right'
+    ? 'bottom-6 right-6 sm:bottom-8 sm:right-8'
     : 'bottom-6 left-6 sm:bottom-8 sm:left-8';
 
   return (
@@ -69,19 +78,19 @@ export default function WhatsAppButton({
         title="Chat with us on WhatsApp"
       >
         {/* Pulse Effect */}
-        <div className="absolute inset-0 rounded-full bg-[#25D366] opacity-0 group-hover:opacity-20 animate-pulse" 
-             style={{ width: '100%', height: '100%' }} />
+        <div className="absolute inset-0 rounded-full bg-[#25D366] opacity-0 group-hover:opacity-20 animate-pulse"
+          style={{ width: '100%', height: '100%' }} />
 
         {/* Button Container */}
         <div className="relative flex items-center gap-3 bg-white rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 p-4 group-hover:bg-[#f0f0f0]">
           {/* Icon */}
           <div className="w-6 h-6 flex items-center justify-center">
-            <svg 
-              className="w-6 h-6 text-[#25D366]" 
-              fill="currentColor" 
+            <svg
+              className="w-6 h-6 text-[#25D366]"
+              fill="currentColor"
               viewBox="0 0 24 24"
             >
-              <path d="M17.471 16.624c-.504-.635-1.196-.987-1.968-.987-.571 0-1.125.217-1.629.644l-.67.544c-.154.124-.319.128-.502.068-.527-.182-1.229-.642-1.89-1.303-.661-.661-1.121-1.363-1.303-1.89-.06-.183-.056-.348.068-.502l.544-.67c.427-.504.644-1.058.644-1.629 0-.772-.352-1.464-.987-1.968l-.8-1.003c-.556-.68-1.47-1.167-2.4-1.167-.969 0-1.866.407-2.517 1.118-1.246 1.346-1.514 3.176-.71 5.376 1.043 2.748 3.872 5.576 6.62 6.62 2.2.804 4.03.536 5.376-.71.711-.651 1.118-1.548 1.118-2.517 0-.93-.487-1.844-1.167-2.4l-1.003-.8z"/>
+              <path d="M17.471 16.624c-.504-.635-1.196-.987-1.968-.987-.571 0-1.125.217-1.629.644l-.67.544c-.154.124-.319.128-.502.068-.527-.182-1.229-.642-1.89-1.303-.661-.661-1.121-1.363-1.303-1.89-.06-.183-.056-.348.068-.502l.544-.67c.427-.504.644-1.058.644-1.629 0-.772-.352-1.464-.987-1.968l-.8-1.003c-.556-.68-1.47-1.167-2.4-1.167-.969 0-1.866.407-2.517 1.118-1.246 1.346-1.514 3.176-.71 5.376 1.043 2.748 3.872 5.576 6.62 6.62 2.2.804 4.03.536 5.376-.71.711-.651 1.118-1.548 1.118-2.517 0-.93-.487-1.844-1.167-2.4l-1.003-.8z" />
             </svg>
           </div>
 
@@ -104,7 +113,7 @@ export default function WhatsAppButton({
 
       {/* Quick Message Menu (Desktop only) */}
       <AnimatePresence>
-        {isHovered && window.innerWidth >= 1024 && (
+        {isHovered && isDesktop && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
