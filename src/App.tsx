@@ -69,19 +69,22 @@ const BLOG_POSTS = [
     title: "The Art of Saying No",
     category: "Mental Health",
     excerpt: "Learn how setting boundaries can significantly reduce stress and help you prioritize what truly matters.",
-    icon: ShieldCheck
+    icon: ShieldCheck,
+    image: "/images/therapy-setting.png"
   },
   {
     title: "Mental Health is a Necessity",
     category: "Advocacy",
     excerpt: "Breaking the stigma: Why seeking professional help is a sign of strength, not a luxury.",
-    icon: Heart
+    icon: Heart,
+    image: "/images/mens-mental-health.png"
   },
   {
     title: "Finding Bravery in Life",
     category: "Prevention",
     excerpt: "Special focus on suicide prevention and encouraging resilience during life's most difficult challenges.",
-    icon: Users
+    icon: Users,
+    image: "/images/mindfulness-calm.png"
   }
 ];
 
@@ -428,7 +431,7 @@ export default function App() {
           >
             <div className="aspect-[4/5] rounded-[40px] overflow-hidden shadow-2xl">
               <img
-                src="https://picsum.photos/seed/psychology/800/1000"
+                src="/images/hero-psychology.png"
                 alt="Professional Portrait"
                 className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-[600ms]"
                 referrerPolicy="no-referrer"
@@ -492,7 +495,7 @@ export default function App() {
           </div>
           <div className="flex justify-center">
             <img
-              src="https://picsum.photos/seed/mindfulness/600/700"
+              src="/images/psychology-brain.png"
               alt="Psychology and Mindfulness"
               className="rounded-[2rem] shadow-2xl max-w-[500px] w-full hover:scale-[1.02] transition-transform duration-500"
               referrerPolicy="no-referrer"
@@ -556,7 +559,7 @@ export default function App() {
                 <div key={i} className="group cursor-pointer">
                   <div className="aspect-video rounded-2xl overflow-hidden mb-6 bg-gray-800">
                     <img
-                      src={`https://picsum.photos/seed/${i + 10}/600/400`}
+                      src={post.image}
                       alt={post.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
                       referrerPolicy="no-referrer"
@@ -607,18 +610,18 @@ export default function App() {
             <div className="lg:w-1/2 grid grid-cols-2 gap-4">
               <div className="space-y-4">
                 <div className="aspect-square rounded-3xl overflow-hidden bg-white p-2 shadow-sm">
-                  <img src="https://picsum.photos/seed/career1/400/400" alt="Career" className="w-full h-full object-cover rounded-2xl hover:scale-105 transition-transform duration-500" referrerPolicy="no-referrer" />
+                  <img src="/images/hero-psychology.png" alt="Therapy Room" className="w-full h-full object-cover rounded-2xl hover:scale-105 transition-transform duration-500" />
                 </div>
                 <div className="aspect-[3/4] rounded-3xl overflow-hidden bg-white p-2 shadow-sm">
-                  <img src="https://picsum.photos/seed/career2/400/533" alt="Career" className="w-full h-full object-cover rounded-2xl hover:scale-105 transition-transform duration-500" referrerPolicy="no-referrer" />
+                  <img src="/images/therapy-setting.png" alt="Therapy Setting" className="w-full h-full object-cover rounded-2xl hover:scale-105 transition-transform duration-500" />
                 </div>
               </div>
               <div className="space-y-4 pt-8">
                 <div className="aspect-[3/4] rounded-3xl overflow-hidden bg-white p-2 shadow-sm">
-                  <img src="https://picsum.photos/seed/career3/400/533" alt="Career" className="w-full h-full object-cover rounded-2xl hover:scale-105 transition-transform duration-500" referrerPolicy="no-referrer" />
+                  <img src="/images/psychology-brain.png" alt="Psychology Growth" className="w-full h-full object-cover rounded-2xl hover:scale-105 transition-transform duration-500" />
                 </div>
                 <div className="aspect-square rounded-3xl overflow-hidden bg-white p-2 shadow-sm">
-                  <img src="https://picsum.photos/seed/career4/400/400" alt="Career" className="w-full h-full object-cover rounded-2xl hover:scale-105 transition-transform duration-500" referrerPolicy="no-referrer" />
+                  <img src="/images/mindfulness-calm.png" alt="Mindfulness" className="w-full h-full object-cover rounded-2xl hover:scale-105 transition-transform duration-500" />
                 </div>
               </div>
             </div>
