@@ -1,0 +1,499 @@
+/**
+ * Production Form Styling
+ * Add these styles to your styles.css for enhanced form appearance
+ * Includes loading states, validation feedback, and accessibility
+ */
+
+/* ============================================================
+   FORM INPUT STYLING
+   ============================================================ */
+
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #E5E7EB;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background-color: #FFFFFF;
+  color: #2D2D2D;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #5A5A40;
+  box-shadow: 0 0 0 3px rgba(90, 90, 64, 0.1);
+}
+
+.form-input:disabled {
+  background-color: #F5F5F0;
+  color: #9CA3AF;
+  cursor: not-allowed;
+}
+
+.form-input::placeholder {
+  color: #9CA3AF;
+}
+
+/* Validation states */
+.form-input.error {
+  border-color: #EF4444;
+  background-color: #FEE2E2;
+}
+
+.form-input.success {
+  border-color: #10B981;
+  background-color: #F0FDF4;
+}
+
+/* ============================================================
+   FORM LABELS & CONTAINER
+   ============================================================ */
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 640px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   FORM TEXTAREA
+   ============================================================ */
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: inherit;
+}
+
+.form-textarea:focus {
+  border-color: #5A5A40;
+  box-shadow: 0 0 0 3px rgba(90, 90, 64, 0.1);
+}
+
+/* ============================================================
+   FORM SELECT (DROPDOWN)
+   ============================================================ */
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%235A5A40' d='M1 4l5 4 5-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: #5A5A40;
+  box-shadow: 0 0 0 3px rgba(90, 90, 64, 0.1);
+}
+
+/* ============================================================
+   FORM BUTTONS
+   ============================================================ */
+
+.form-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 24px;
+  background-color: #5A5A40;
+  color: #FFFFFF;
+  border: 2px solid #5A5A40;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-submit:hover:not(:disabled) {
+  background-color: #4A4A35;
+  border-color: #4A4A35;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(90, 90, 64, 0.2);
+}
+
+.form-submit:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(90, 90, 64, 0.15);
+}
+
+.form-submit:disabled {
+  background-color: #D1D5DB;
+  border-color: #D1D5DB;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.form-submit.loading {
+  position: relative;
+}
+
+/* ============================================================
+   LOADING SPINNER
+   ============================================================ */
+
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #FFFFFF;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================================
+   STATUS MESSAGES
+   ============================================================ */
+
+.form-status {
+  display: block;
+  margin-top: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-status.success {
+  background-color: #F0FDF4;
+  border: 1px solid #10B981;
+  color: #047857;
+}
+
+.form-status.success::before {
+  content: "✓ ";
+  font-weight: bold;
+}
+
+.form-status.error {
+  background-color: #FEE2E2;
+  border: 1px solid #EF4444;
+  color: #DC2626;
+}
+
+.form-status.error::before {
+  content: "✕ ";
+  font-weight: bold;
+}
+
+.form-status.loading {
+  background-color: #DBEAFE;
+  border: 1px solid #3B82F6;
+  color: #1E40AF;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-status.info {
+  background-color: #E0E7FF;
+  border: 1px solid #818CF8;
+  color: #4338CA;
+}
+
+/* ============================================================
+   SUCCESS MESSAGE
+   ============================================================ */
+
+.form-success-message {
+  text-align: center;
+  padding: 40px 24px;
+  animation: slideIn 0.5s ease;
+}
+
+.success-icon {
+  width: 64px;
+  height: 64px;
+  background-color: #F0FDF4;
+  border: 2px solid #10B981;
+  color: #10B981;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin: 0 auto 16px;
+  font-weight: bold;
+}
+
+.form-success-message h3 {
+  font-size: 24px;
+  color: #1F2937;
+  margin: 16px 0 8px;
+}
+
+.form-success-message p {
+  color: #6B7280;
+  margin: 8px 0 16px;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   BOOKING MODAL STYLING
+   ============================================================ */
+
+.booking-modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.booking-modal-overlay.open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.booking-modal {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.booking-modal-header {
+  padding: 24px;
+  border-bottom: 1px solid #E5E7EB;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.booking-modal-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #1F2937;
+  margin: 0 0 8px;
+}
+
+.booking-modal-subtitle {
+  font-size: 14px;
+  color: #6B7280;
+  margin: 0;
+}
+
+.booking-modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #9CA3AF;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  margin-top: -4px;
+}
+
+.booking-modal-close:hover {
+  background-color: #F5F5F0;
+  color: #5A5A40;
+}
+
+.booking-form {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.booking-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 480px) {
+  .booking-form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .booking-modal {
+    width: 95%;
+  }
+}
+
+.booking-privacy-note {
+  font-size: 12px;
+  color: #9CA3AF;
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
+
+/* Focus visible for keyboard users */
+.form-input:focus-visible,
+.form-submit:focus-visible {
+  outline: 2px solid #5A5A40;
+  outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .form-submit,
+  .form-input,
+  .form-status,
+  .booking-modal {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+  .form-input {
+    border-width: 3px;
+  }
+  
+  .form-submit {
+    border-width: 3px;
+  }
+}
+
+/* ============================================================
+   MOBILE OPTIMIZATION
+   ============================================================ */
+
+@media (max-width: 640px) {
+  .form-input {
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+  
+  .form-submit {
+    padding: 16px 20px;
+    font-size: 16px;
+    min-height: 44px; /* Touch-friendly */
+  }
+  
+  .form-label {
+    font-size: 13px;
+  }
+  
+  .booking-modal {
+    max-width: 100%;
+    height: 100%;
+    border-radius: 16px 16px 0 0;
+  }
+}
+
+/* ============================================================
+   DARK MODE SUPPORT (Optional)
+   ============================================================ */
+
+@media (prefers-color-scheme: dark) {
+  .form-input {
+    background-color: #1F2937;
+    border-color: #4B5563;
+    color: #F3F4F6;
+  }
+  
+  .form-input::placeholder {
+    color: #9CA3AF;
+  }
+  
+  .form-input:focus {
+    border-color: #9DB84D;
+  }
+  
+  .booking-modal {
+    background-color: #1F2937;
+    color: #F3F4F6;
+  }
+  
+  .booking-modal-header {
+    border-bottom-color: #4B5563;
+  }
+  
+  .booking-modal-title {
+    color: #F3F4F6;
+  }
+  
+  .booking-modal-subtitle {
+    color: #D1D5DB;
+  }
+}
