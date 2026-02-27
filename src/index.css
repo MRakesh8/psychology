@@ -5,3 +5,20 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Cormorant Garamond", serif;
 }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Extra bottom padding on mobile for sticky CTA */
+@media (max-width: 767px) {
+  footer {
+    padding-bottom: 5rem !important;
+  }
+}
