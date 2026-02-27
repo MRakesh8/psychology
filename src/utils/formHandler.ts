@@ -351,7 +351,7 @@ export const getSanitizedFormData = (form: HTMLFormElement): Record<string, stri
   const data: Record<string, string> = {};
   const inputs = form.querySelectorAll('input, select, textarea');
 
-  inputs.forEach((input: HTMLElement) => {
+  inputs.forEach((input: Element) => {
     const element = input as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
     const name = element.name;
     if (name && element.value) {
