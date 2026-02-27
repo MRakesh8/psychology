@@ -16,16 +16,8 @@ import {
   CheckCircle2,
   Menu,
   X,
-  GraduationCap,
   ShieldCheck,
-  Users,
-  Sparkles,
-  BookOpen,
-  Phone,
-  Clock,
-  Globe,
-  CalendarDays,
-  MessageSquare
+  Users
 } from 'lucide-react';
 import { motion, AnimatePresence, useInView } from 'motion/react';
 
@@ -33,7 +25,6 @@ const NAV_ITEMS = [
   { label: 'About', href: '#about' },
   { label: 'Specializations', href: '#specializations' },
   { label: 'Resources', href: '#resources' },
-  { label: 'Career Scope', href: '#career' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -577,57 +568,6 @@ export default function App() {
         </div>
       </AnimatedSection>
 
-      {/* ===== CAREER SCOPE ===== */}
-      <AnimatedSection id="career" className="py-24 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="bg-[#F5F5F0] rounded-[40px] p-8 md:p-16 flex flex-col lg:flex-row gap-16 items-center">
-            <div className="lg:w-1/2">
-              <h2 className="text-4xl font-serif mb-6 text-[#1F2937]">The Scope of Psychology in India</h2>
-              <p className="text-[#4B5563] mb-8 leading-relaxed">
-                Navigating a career in psychology can be complex. We provide detailed insights into specializations, educational pathways, and professional opportunities within the Indian context.
-              </p>
-              <div className="space-y-6">
-                <div className="flex gap-4">
-                  <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm shrink-0">
-                    <GraduationCap className="w-5 h-5 text-[#5A5A40]" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-[#1F2937]">Educational Pathways</h4>
-                    <p className="text-sm text-[#6B7280]">Guidance on degrees, certifications, and RCI licensing requirements.</p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm shrink-0">
-                    <Briefcase className="w-5 h-5 text-[#5A5A40]" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-[#1F2937]">Market Insights</h4>
-                    <p className="text-sm text-[#6B7280]">Average starting salaries (approx. ₹35,000/mo for Clinical Psychologists) and growth trends.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="lg:w-1/2 grid grid-cols-2 gap-4">
-              <div className="space-y-4">
-                <div className="aspect-square rounded-3xl overflow-hidden bg-white p-2 shadow-sm">
-                  <img src="/images/hero-psychology.png" alt="Therapy Room" className="w-full h-full object-cover rounded-2xl hover:scale-105 transition-transform duration-500" />
-                </div>
-                <div className="aspect-[3/4] rounded-3xl overflow-hidden bg-white p-2 shadow-sm">
-                  <img src="/images/therapy-setting.png" alt="Therapy Setting" className="w-full h-full object-cover rounded-2xl hover:scale-105 transition-transform duration-500" />
-                </div>
-              </div>
-              <div className="space-y-4 pt-8">
-                <div className="aspect-[3/4] rounded-3xl overflow-hidden bg-white p-2 shadow-sm">
-                  <img src="/images/psychology-brain.png" alt="Psychology Growth" className="w-full h-full object-cover rounded-2xl hover:scale-105 transition-transform duration-500" />
-                </div>
-                <div className="aspect-square rounded-3xl overflow-hidden bg-white p-2 shadow-sm">
-                  <img src="/images/mindfulness-calm.png" alt="Mindfulness" className="w-full h-full object-cover rounded-2xl hover:scale-105 transition-transform duration-500" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </AnimatedSection>
 
       {/* ===== CONTACT ===== */}
       <AnimatedSection id="contact" className="py-24 px-4 bg-white">
